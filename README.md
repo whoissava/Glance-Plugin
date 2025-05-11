@@ -72,6 +72,7 @@ A small widget that gives you some data about your Jellyfin library.
 </details>
 
 Remember to put in your .env 
+
 JELLYFIN_URL= YOUR IP 
 
 JELLYFIN_API_KEY= API KEY
