@@ -10,8 +10,6 @@ A small widget that gives you some data about your Jellyfin library.
   <summary><strong> YAML Configuration for Glance</strong></summary>
   
   ```yaml
-    - size: full
-      widgets:
       - type: custom-api
         title: 📊 Statistiche Jellyfin
         cache: 30m
@@ -44,30 +42,35 @@ A small widget that gives you some data about your Jellyfin library.
             {{- end }}
           {{- end }}
 
-          {{- /* converti tick→sec (/1e7)→ore (/3600) */}}
           {{- $hoursMovies := div (div $ticksMovies 10000000) 3600 }}
           {{- $hoursSeries := div (div $ticksEps     10000000) 3600 }}
 
-          <div style="display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem;">
-            <!-- RIGA 1: Totali -->
-            <div style="padding:1rem; background:#1f2937; border-radius:0.5rem; text-align:center;">
+          <div style="display: grid; grid-template-columns: repeat(2,1fr); gap: 0.5rem;">
+            <!-- RIGA 1 -->
+            <div style="padding:1rem; border-radius:var(--border-radius); text-align:center;">
               <div style="font-size:1.5rem; font-weight:bold;">{{ $movieCount }}</div>
               <div>Totale Film</div>
             </div>
-            <div style="padding:1rem; background:#1f2937; border-radius:0.5rem; text-align:center;">
+            <div style="padding:1rem; border-radius:var(--border-radius); text-align:center;">
               <div style="font-size:1.5rem; font-weight:bold;">{{ $seriesCount }} ({{ $episodeCount }} episodi)</div>
               <div>Totale Serie</div>
             </div>
-            <!-- RIGA 2: Ore -->
-            <div style="padding:1rem; background:#1f2937; border-radius:0.5rem; text-align:center;">
+
+            <!-- SEPARATORE -->
+            <div style="grid-column: span 2; height:1px; background:rgba(255,255,255,0.05); margin:0.25rem 0;"></div>
+
+            <!-- RIGA 2 -->
+            <div style="padding:1rem; border-radius:var(--border-radius); text-align:center;">
               <div style="font-size:1.5rem; font-weight:bold;">{{ $hoursMovies }}</div>
               <div>Ore di Film</div>
             </div>
-            <div style="padding:1rem; background:#1f2937; border-radius:0.5rem; text-align:center;">
+            <div style="padding:1rem; border-radius:var(--border-radius); text-align:center;">
               <div style="font-size:1.5rem; font-weight:bold;">{{ $hoursSeries }}</div>
               <div>Ore di Serie</div>
             </div>
           </div>
+
+
   ```
 </details>
 
